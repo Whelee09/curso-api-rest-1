@@ -7,9 +7,11 @@
 </head>
 <body>
     <h1>Gatos app</h1>
-
+    <span id="gatosError"></span>
     <section id="randomCats">
         <h2>Gatos aleatorios</h2>
+
+        
 
         <article>
             <img id="img1" width="350" alt="foto de un gato">
@@ -19,11 +21,7 @@
             <img id="img2" width="350" alt="foto de un gato">
             <button>guardar gato en fav</button>
         </article>
-        <article>
-            <img id="img3" width="350" alt="foto de un gato">
-            <button>guardar gato en fav</button>
-        </article>
-        <button onclick="refresh()">refresh</button>
+        <button onclick="loadRandomGatos()">refresh</button>
     </section>
 
 

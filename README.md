@@ -13,3 +13,13 @@ informacion extra para los endpoints
 
 
 
+### metodos http
+
++ get
++ post 
++ put and patch
+put: editar info, patch: modificar algo
++ delete
+
+
+
