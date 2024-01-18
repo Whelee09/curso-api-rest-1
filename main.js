@@ -45,7 +45,7 @@ async function saveCatFav(){
       'Content-Type': 'application/json'
     },
     body:JSON.stringify({
-      image_id: '12',
+      image_id: '7h3',
       //sub_id:"optional unique id of your user"
     })
   })
