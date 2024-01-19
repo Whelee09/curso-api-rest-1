@@ -1,15 +1,16 @@
 //query parameters ?limit=3
-const API_URL_RANDOM = 'https://api.thecatapi.com/v1/images/search?api_key=live_Wd3AwYuFZGxxEioUKOxems72lcmbT7zlZLwTrrST64OTlnR9NEOAzxDKkRNQoh4O&limit=3'
+const API_URL_RANDOM = 'https://api.thecatapi.com/v1/images/search?api_key=live_Wd3AwYuFZGxxEioUKOxems72lcmbT7zlZLwTrrST64OTlnR9NEOAzxDKkRNQoh4O&limit=2'
 
 //const API_KEY = live_Wd3AwYuFZGxxEioUKOxems72lcmbT7zlZLwTrrST64OTlnR9NEOAzxDKkRNQoh4O;
 const API_URL_FAV = 'https://api.thecatapi.com/v1/favourites?api_key=live_Wd3AwYuFZGxxEioUKOxems72lcmbT7zlZLwTrrST64OTlnR9NEOAzxDKkRNQoh4O'
+const API_URL_DELFAV = (id) => `https://api.thecatapi.com/v1/favourites/${id}`
 const spanError = document.getElementById('gatosError');
 
 async function loadRandomGatos(){
   try {
   const res = await fetch(API_URL_RANDOM);
   const data = await res.json();
-
+ 
   console.log('aleatorios');
   console.log(data);
 
@@ -18,37 +19,85 @@ async function loadRandomGatos(){
 
   img1.src = data[0].url;
   img2.src = data[1].url;
+
+  const bt1 = document.getElementById('btn1Save');
+  const bt2 = document.getElementById('btn2Save');
+  bt1.onclick = () => (saveCatFav(data[0].id));
+  bt2.onclick = () => (saveCatFav(data[1].id));
+
   } catch (error) {
     spanError.innerHTML = "Error: " + error;
   }
 }
 async function loadFavGatos(){
-  const res = await fetch(API_URL_FAV);
-  const data = await res.json();
   console.log('fav');
-  console.log(data);
+  const res = await fetch(API_URL_FAV);
 
-  // no me esta agarradno el objeto res.... ayuda??? por lo que manejo las excepciones con try catch
-  if(res.status !== 200){
-    spanError.innerHTML = "Error: " +  data.message;
-  }else{
-    console.log('ando por aqui');
-    
-  }
+  try {
+    const data = await res.json();
+    console.log(data);
+
+    const section = document.getElementById('favCats')
+    section.innerHTML = "";
+    const h2Fav = document.createElement('h2');
+    const h2FavText = document.createTextNode('michis fav')
+    h2Fav.appendChild(h2FavText);
+    section.appendChild(h2Fav);
+
+
+    data.forEach(gato => {
+      const article = document.createElement('article');
+      const img = document.createElement('img');
+      const btnDelFav = document.createElement('button')
+      const btnText = document.createTextNode('Sacar al michi de fav');
+      console.log(gato.image_id);
+      btnDelFav.onclick = () => deleteFavCat(gato.id);
+      
+
+      btnDelFav.appendChild(btnText);
+      img.src = gato.image.url;
+      img.width = 250;
+      article.appendChild(img);
+      article.appendChild(btnDelFav);
+      section.appendChild(article);
+
+    });
+  } catch (error) {
+    spanError.innerHTML = "Error: " + res.status + "||" + error;
+  } 
 }  
 
-
-async function saveCatFav(){
+async function saveCatFav(id){
+  console.log('fuardando gatos fav');
   const res = await fetch(API_URL_FAV, {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json'
     },
     body:JSON.stringify({
-      image_id: '7h3',
+      image_id: id,
       //sub_id:"optional unique id of your user"
     })
   })
+  loadFavGatos();
+}
+
+async function deleteFavCat(id){
+  const res = await fetch(API_URL_DELFAV(id), {
+    method: 'DELETE',
+    headers:{
+      "x-api-key": `live_Wd3AwYuFZGxxEioUKOxems72lcmbT7zlZLwTrrST64OTlnR9NEOAzxDKkRNQoh4O`
+      }
+  });
+  try {
+    
+  } catch (error) {
+    console.log(error);
+    spanError.innerHTML = "Error: " + error;
+    console.log(res.status);
+  }
+  loadFavGatos();
+  
 }
 
 loadRandomGatos();
