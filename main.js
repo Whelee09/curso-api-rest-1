@@ -4,6 +4,7 @@ const API_URL_RANDOM = 'https://api.thecatapi.com/v1/images/search?api_key=live_
 //const API_KEY = live_Wd3AwYuFZGxxEioUKOxems72lcmbT7zlZLwTrrST64OTlnR9NEOAzxDKkRNQoh4O;
 const API_URL_FAV = 'https://api.thecatapi.com/v1/favourites?api_key=live_Wd3AwYuFZGxxEioUKOxems72lcmbT7zlZLwTrrST64OTlnR9NEOAzxDKkRNQoh4O'
 const API_URL_DELFAV = (id) => `https://api.thecatapi.com/v1/favourites/${id}`
+const API_URL_UPLOAD= 'https://api.thecatapi.com/v1/images/upload';
 const spanError = document.getElementById('gatosError');
 
 async function loadRandomGatos(){
@@ -66,7 +67,9 @@ async function loadFavGatos(){
     spanError.innerHTML = "Error: " + res.status + "||" + error;
   } 
 }  
-
+///aplication/type
+//CONTENT TYPE
+//multipart/
 async function saveCatFav(id){
   console.log('fuardando gatos fav');
   const res = await fetch(API_URL_FAV, {
@@ -76,12 +79,13 @@ async function saveCatFav(id){
     },
     body:JSON.stringify({
       image_id: id,
-      //sub_id:"optional unique id of your user"
     })
   })
   loadFavGatos();
 }
 
+
+//form data????
 async function deleteFavCat(id){
   const res = await fetch(API_URL_DELFAV(id), {
     method: 'DELETE',
@@ -97,7 +101,22 @@ async function deleteFavCat(id){
     console.log(res.status);
   }
   loadFavGatos();
-  
+}
+async function uploadFile (){
+  const form = document.getElementById('uploadingForm');
+  const formData = new FormData(form);
+
+  const res = await fetch(API_URL_UPLOAD, {
+    method: 'POST',
+    headers: {
+      "x-api-key": `live_Wd3AwYuFZGxxEioUKOxems72lcmbT7zlZLwTrrST64OTlnR9NEOAzxDKkRNQoh4O`
+    },
+    body:formData,
+  });
+  const data = await res.json();
+  saveCatFav(data.id);
+
+  console.log(formData.get('file'));
 }
 
 loadRandomGatos();
