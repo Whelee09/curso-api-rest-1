@@ -1,0 +1,32 @@
+*{
+    background-color: #c2e4cb;
+}
+.containerArticle{
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+
+}
+.imagenes{
+    width: 250px;
+    height: 250px;
+    border-radius: 5px;
+}
+.flexContainer{
+    display: flex;
+    flex-wrap: wrap;
+}
+button{
+    border: none; 
+    color: white; 
+    padding: 14px 28px; 
+    cursor: pointer; 
+    border-radius: 5px; 
+    background-color: #007bff;
+}
+button:hover{
+    background:#338cd4;;
+}
+h1{
+    text-align: center;
+}

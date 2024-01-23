@@ -40,15 +40,17 @@ async function loadFavGatos(){
 
     const section = document.getElementById('favCats')
     section.innerHTML = "";
+    const flexContainer = document.createElement('div');
     const h2Fav = document.createElement('h2');
-    const h2FavText = document.createTextNode('michis fav')
+    const h2FavText = document.createTextNode('michis fav');
+    flexContainer.classList.add('flexContainer');
     h2Fav.appendChild(h2FavText);
-    section.appendChild(h2Fav);
-
 
     data.forEach(gato => {
       const article = document.createElement('article');
+      article.classList.add('containerArticle');
       const img = document.createElement('img');
+      img.classList.add('imagenes')
       const btnDelFav = document.createElement('button')
       const btnText = document.createTextNode('Sacar al michi de fav');
       console.log(gato.image_id);
@@ -60,7 +62,9 @@ async function loadFavGatos(){
       img.width = 250;
       article.appendChild(img);
       article.appendChild(btnDelFav);
-      section.appendChild(article);
+      flexContainer.appendChild(article);
+      section.appendChild(h2Fav);
+      section.appendChild(flexContainer);
 
     });
   } catch (error) {

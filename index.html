@@ -4,31 +4,26 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Gatos aleatorios</title>
+    <link rel="stylesheet" href="./styles.css">
 </head>
 <body>
     <h1>Gatos app</h1>
     <span id="gatosError"></span>
     <section id="randomCats">
         <h2>Gatos aleatorios</h2>
-
-        
-
-        <article>
-            <img id="img1" width="250" alt="foto de un gato">
-            <button id="btn1Save">guardar gato en fav</button>
-        </article>
-        <article>
-            <img id="img2" width="250" alt="foto de un gato">
-            <button id="btn2Save">guardar gato en fav</button>
-        </article>
+        <div class="flexContainer">
+            <article class="containerArticle">
+                <img id="img1" alt="foto de un gato" class="imagenes" alt="foto de un gato">
+                <button id="btn1Save">guardar gato en fav</button>
+            </article>
+            <article class="containerArticle">
+                <img id="img2" width="250" class="imagenes" alt="foto de un gato">
+                <button id="btn2Save">guardar gato en fav</button>
+            </article>
+        </div>
         <button onclick="loadRandomGatos()">refresh</button>
     </section>
-
-
-
-    <section id="favCats">
-    </section>
-
+    
     <section id="uploadingGato">
         <h2>Sube la foto de tu gato</h2>
 
@@ -38,9 +33,10 @@
         </form>
     </section>
 
-    
 
-    
+    <section id="favCats">
+    </section>
+
 
     <script src="./main.js"></script>
 </body>
