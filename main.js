@@ -1,4 +1,3 @@
-//query parameters ?limit=3
 const API_URL_RANDOM = 'https://api.thecatapi.com/v1/images/search?api_key=live_Wd3AwYuFZGxxEioUKOxems72lcmbT7zlZLwTrrST64OTlnR9NEOAzxDKkRNQoh4O&limit=2'
 
 //const API_KEY = live_Wd3AwYuFZGxxEioUKOxems72lcmbT7zlZLwTrrST64OTlnR9NEOAzxDKkRNQoh4O;
@@ -71,9 +70,6 @@ async function loadFavGatos(){
     spanError.innerHTML = "Error: " + res.status + "||" + error;
   } 
 }  
-///aplication/type
-//CONTENT TYPE
-//multipart/
 async function saveCatFav(id){
   console.log('fuardando gatos fav');
   const res = await fetch(API_URL_FAV, {
@@ -88,8 +84,6 @@ async function saveCatFav(id){
   loadFavGatos();
 }
 
-
-//form data????
 async function deleteFavCat(id){
   const res = await fetch(API_URL_DELFAV(id), {
     method: 'DELETE',
@@ -129,7 +123,7 @@ loadFavGatos();
 
 
 
-//sin async-await
+//peticion sinsin async-await
 // function refresh(){
 //   fetch(API_URL)
 //     .then(response => response.json())
@@ -142,16 +136,3 @@ loadFavGatos();
 
 
 
-// documentacion para hacer post a fav
-// Create a Favourite
-// To allow your Users to Favourite a particular Image, you need to create a 'Favourite' via POST ./favourites, passing:
-
-// {
-//     "image_id":"id of the image",
-//     "sub_id":"optional unique id of your user"
-// }
-// This will return:
-
-// {
-//     "id":"unique-id-of-the-new-favourite"
-// }

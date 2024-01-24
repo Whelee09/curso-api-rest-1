@@ -1,3 +1,7 @@
+## Documentacion de la api usada en el proyecto
+
+[the cat api](https://thecatapi.com/)
+
 ### endpoint
 rutas como api.com/algo
 
@@ -94,8 +98,20 @@ para no tener distintos endpoints, todo junto, en el front end decidimos como qu
 + Dapps: aplicaciones descentralizadas
 
 
+### Otra manera de enviar la peticion de subir imagenes
+```
+instanceAxios({
+  method: "post",
+  url: "/images/upload",
+  data: formData,
+    headers: { "Content-Type": "multipart/form-data" },
+  })
+  .then(function ({data}) {
+     console.log(data);
+     saveCatFav(data.id)
+ })
 
-
+```
 
 
 
