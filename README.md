@@ -39,25 +39,25 @@ Sin embargo tiene mas usos como los mostrados [aqui](https://developer.mozilla.o
 
 
 ## mode:
-(documentacion)[https://developer.mozilla.org/en-US/docs/Glossary/CORS]
-cors
-no-cors
-same-origin
+[documentacion](https://developer.mozilla.org/en-US/docs/Glossary/CORS)
++ cors
++ no-cors
++ same-origin
 
-+ cache(tratar de no tocarlo a menos de que toque): 
-default
-no-store
-reload
-no-cache
-force-cache
-only-if-cached
+## cache(tratar de no tocarlo a menos de que toque): 
++ default
++ no-store
++ reload
++ no-cache
++ force-cache
++ only-if-cached
 
-+ redirect (codigos 300-399) 
+## redirect (codigos 300-399) 
 que hacer en caso de redireccion??
 
-follow
-error
-manual
++ follow
++ error
++ manual
 
 
 ### tips/recomendaciones
@@ -69,28 +69,29 @@ manual
 
 + sendBeacon
 
-No espera una respuesta del servidor
+No espera una respuesta del servidor. 
 Es buena idea para analytics(tipo google analiytics)
 
 
-+ GraphQL
+#### GraphQL
 
-para no tener distintos endpoints, todo junto, en el front end decidimos como queremos que nos llegue la repsuesta++(empowered clients)
-++all request on the same endpoint
++ empowered clients
++ all request on the same endpoint
+
+para no tener distintos endpoints, todo junto, en el front end decidimos como queremos que nos llegue la respuesta
 
 
-+ Web Sockets
+#### Web Sockets
 
-dejar el "tunel abierto"
-
-util para aplicaciones real-time
++ dejar el "tunel abierto"
++ util para aplicaciones real-time
 
 
 
 
 ## Web 3.0
 
--Dapps: aplicaciones descentralizadas
++ Dapps: aplicaciones descentralizadas
 
 
 
