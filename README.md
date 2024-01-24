@@ -99,7 +99,7 @@ para no tener distintos endpoints, todo junto, en el front end decidimos como qu
 
 
 ### Otra manera de enviar la peticion de subir imagenes
-```
+```javascript
 instanceAxios({
   method: "post",
   url: "/images/upload",
